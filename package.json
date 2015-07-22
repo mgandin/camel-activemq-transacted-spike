@@ -1,0 +1,20 @@
+{
+  "name": "payment-mock",
+  "version": "0.0.1",
+  "description": "Mock sur les web services de payment",
+  "private": true,
+  "scripts": {
+    "start": "nodemon --debug server.js"
+  },
+  "author": "Mathieu Gandin <mathieu.gandin@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "colors": "1.0.3",
+    "express": "4.10.1",
+    "moment": "2.8.3",
+    "morgan": "1.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.2.1"
+  }
+}
