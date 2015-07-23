@@ -25,7 +25,7 @@ public class Orchestration {
         return new RouteBuilder() {
             @Override public void configure() throws Exception {
                 from("direct:start")
-                        .to("activemq:queue:confirm-booking?mapJmsMessage=true&requestTimeout=10000&transferExchange=false&replyTo=confirm-booking-reply");//&transactedInOut=true&replyToType=Exclusive");
+                        .to("activemq:queue:confirm-booking?mapJmsMessage=true&requestTimeout=10000&transferExchange=false&replyTo=confirm-booking-reply&concurrentConsumers=5");//&transactedInOut=true&replyToType=Exclusive");
             }
         };
     }
@@ -34,7 +34,7 @@ public class Orchestration {
     public RouteBuilder activeMQToCode(final LoggerProcessor activeMQProcessor) {
         return new RouteBuilder() {
             @Override public void configure() throws Exception {
-                from("activemq:queue:confirm-booking?mapJmsMessage=true&requestTimeout=10000&transferExchange=false&replyTo=confirm-booking-reply")//&transactedInOut=true&replyToType=Exclusive")
+                from("activemq:queue:confirm-booking?mapJmsMessage=true&requestTimeout=10000&transferExchange=false&replyTo=confirm-booking-reply&concurrentConsumers=5")//&transactedInOut=true&replyToType=Exclusive")
                         .setHeader(Exchange.HTTP_METHOD, constant("GET"))
                         .to("http://localhost:6797/payment")
                         .process(activeMQProcessor)

@@ -72,7 +72,7 @@ public class OrchestrationTest {
         public CamelContext context(RouteBuilder directToActiveMQ,
                 RouteBuilder activeMQToCode) throws Exception {
             CamelContext context = new SpringCamelContext();
-            //context.setTracing(true);
+            context.setTracing(true);
             context.setDelayer(0L);
             context.addRoutes(directToActiveMQ);
             context.addRoutes(activeMQToCode);
