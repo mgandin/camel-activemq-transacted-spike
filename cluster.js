@@ -1,7 +1,7 @@
 var recluster = require('recluster'),
     path = require('path');
 
-var cluster = recluster(path.join(__dirname, 'server.js'));
+var cluster = recluster(path.join(__dirname, 'server.js'),{respawn : 1});
 cluster.run();
 
 process.on('SIGUSR2', function() {
