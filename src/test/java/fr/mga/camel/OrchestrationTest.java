@@ -39,7 +39,7 @@ public class OrchestrationTest {
 
         List<Callable<String>> callables = new ArrayList<Callable<String>>();
 
-        for (int i = 0; i < 15 ; i++) {
+        for (int i = 0; i < 5 ; i++) {
             final int counter = i;
             callables.add(new Callable<String>() {
                 @Override public String call() throws Exception {

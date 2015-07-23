@@ -84,19 +84,19 @@ public class ActiveMQConfig {
         return new ActiveMQXAConnectionFactory("vm://test?jms.redeliveryPolicy.maximumRedeliveries=0");
     }
 
-    @Bean(initMethod = "start", destroyMethod = "stop")
-    public PooledConnectionFactory pooledConnectionFactory(ActiveMQXAConnectionFactory jmsConnectionFactory) {
-        PooledConnectionFactory pooledConnectionFactory = new PooledConnectionFactory();
-        pooledConnectionFactory.setMaxConnections(80);
-        pooledConnectionFactory.setConnectionFactory(jmsConnectionFactory);
-        return pooledConnectionFactory;
-    }
+//    @Bean(initMethod = "start", destroyMethod = "stop")
+//    public PooledConnectionFactory pooledConnectionFactory(ActiveMQXAConnectionFactory jmsConnectionFactory) {
+//        PooledConnectionFactory pooledConnectionFactory = new PooledConnectionFactory();
+//        pooledConnectionFactory.setMaxConnections(80);
+//        pooledConnectionFactory.setConnectionFactory(jmsConnectionFactory);
+//        return pooledConnectionFactory;
+//    }
 
     @Bean
     public JmsConfiguration jmsConfig(ActiveMQXAConnectionFactory jmsConnectionFactory, JtaTransactionManager jtaTransactionManager) {
         JmsConfiguration jmsConfig = new JmsConfiguration();
         jmsConfig.setConnectionFactory(jmsConnectionFactory);
-        jmsConfig.setConcurrentConsumers(15);
+        jmsConfig.setConcurrentConsumers(5);
         jmsConfig.setTransacted(true);
         jmsConfig.setTransactionManager(jtaTransactionManager);
         return jmsConfig;

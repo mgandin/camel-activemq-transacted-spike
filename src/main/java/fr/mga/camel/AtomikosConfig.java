@@ -23,7 +23,7 @@ public class AtomikosConfig {
     @Bean(initMethod = "init", destroyMethod = "close")
     public AtomikosConnectionFactoryBean pooledConnectionFactory(ActiveMQXAConnectionFactory jmsConnectionFactory) {
         AtomikosConnectionFactoryBean atomikosConnectionFactoryBean = new AtomikosConnectionFactoryBean();
-        atomikosConnectionFactoryBean.setPoolSize(15);
+        atomikosConnectionFactoryBean.setPoolSize(5);
         atomikosConnectionFactoryBean.setUniqueResourceName("activemq");
         atomikosConnectionFactoryBean.setXaConnectionFactory(jmsConnectionFactory);
         return atomikosConnectionFactoryBean;
